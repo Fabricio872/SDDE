@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php:
+    image: php-ubuntu
+    container_name: php-ubuntu
+    restart: unless-stopped
+    volumes:
+      - ./:/srv/www
+  mariadb:
+    image: mariadb
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mariaDbData:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: dbPassword
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./phpmyadminConfig/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    links:
+      - mariadb:db
