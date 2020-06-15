@@ -4,6 +4,7 @@
  - MariaDb
  - Phpmyadmin
  - Symfony
+ - Composer
 
 ## Installation
 For installation clone project to somewhere where it can stay because in cloned directory is stored database data and phpmyadmin configuration. Then run `install.sh` with sudo rights.
